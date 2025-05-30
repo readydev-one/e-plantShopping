@@ -4,10 +4,19 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux'
 import store from './store.js'
+import { BrowserRouter } from 'react-router-dom'
+
+// Dynamically set basename for GitHub Pages
+const basename = process.env.NODE_ENV === 'production'
+  ? '/e-plantShopping' // 🔁 Replace with your actual repo name
+  : '/'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+      <BrowserRouter basename={basename}>
+        <App />
+      </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
